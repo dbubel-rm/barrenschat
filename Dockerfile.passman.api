@@ -1,0 +1,20 @@
+
+FROM golang:1.11.5
+#ENV CGO_ENABLED 0
+RUN mkdir -p /go/src/github.com/dbubel/passman
+COPY . /go/src/github.com/dbubel/passman
+WORKDIR /go/src/github.com/dbubel/passman/cmd/passman-api
+CMD go test -v -p=1 $(go list ./... | grep -v /vendor/)
+#RUN go build -ldflags "-s -w -X main.build=$(git rev-parse HEAD)" -a -tags netgo
+
+
+# Run the Go Binary in Alpine.
+
+#FROM alpine:3.7
+#ARG BUILD_DATE
+#ARG VCS_REF
+#EXPOSE 3000
+#EXPOSE 4000
+#COPY --from=build /go/src/github.com/dbubel/passman/cmd/passman-api /bin/
+#ENTRYPOINT ["/bin/passman-api"]
+

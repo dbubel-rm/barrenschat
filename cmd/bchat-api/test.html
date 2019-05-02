@@ -1,0 +1,35 @@
+<!-- Serve with: python -m SimpleHTTPServer 8888 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+
+</body>
+
+<script>
+// const axios = require('axios');
+
+// Send a GET request
+const listUsers = async () => {
+    try {
+        const res = await axios.post('http://localhost:3000/health',{
+            name: 'Atta',
+            job: 'Freelance Developer'
+        });
+        console.log(res.data);
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+listUsers();
+</script>
+
+</html>
